@@ -1,14 +1,9 @@
-#  This script logs onto ACI. But HTTP must be turned on the APIC first.
-
 import requests
 
-url = "https://apic/api/aaaLogin.json"
+url = "http://192.168.10.1/api/aaaLogin.json"
 
-payload = "{\n \"aaaUser\":{\n\t\"attributes\":{\n\t\t\"name\":\"admin\",\n\t\t\"pwd\":\"cisco123\"\n\t}\n  }\n}"
-headers = {
-    'cache-control': "no-cache",
-    'postman-token': "68f4acae-0950-10e4-5c8a-7687bc2c3c1d"
-    }
+payload = "{\n\t\"aaaUser\": {\n\t\t\"attributes\": {\n\t\t\t\"name\" : \"admin\",\n\t\t\t\"pwd\" : \"ciscoapic\"\n\t\t}\n\t}\n}"
+headers = {'Authorization': 'Basic YWRtaW46Y2lzY29hcGlj'}
 
 response = requests.request("POST", url, data=payload, headers=headers)
 
